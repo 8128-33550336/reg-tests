@@ -4,6 +4,7 @@ run-name: publish
 permissions:
   contents: read
   packages: read
+  pages: write
 
 on:
   push:
@@ -15,12 +16,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      - uses: docker/login-action@v2
+        uses: actions/checkout@v6
+
+      - uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: collect
         run: |
           mkdir -p input
@@ -30,10 +33,12 @@ jobs:
             ./bylaw-master/bylaw-master.md \
             ./bylaw-welcoming/bylaw-welcoming.md \
             ./input/
+
       - name: build
         uses: docker://ghcr.io/8128-33550336/regulations-generator:123c8cfe6a77e426a42abcc0069bb69171f84679
         with:
           args: gen -a ./input ./output
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
@@ -41,12 +46,10 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './output'
+
   publish:
     needs: build
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v3
