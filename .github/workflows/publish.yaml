@@ -34,7 +34,7 @@ jobs:
             ./input/
 
       - name: build
-        uses: docker://ghcr.io/8128-33550336/regulations-generator:123c8cfe6a77e426a42abcc0069bb69171f84679
+        uses: docker://ghcr.io/8128-33550336/regulations-generator:3592f417c647893330517a0b626f5fae33c9596c
         with:
           args: gen -a ./input ./output
 
