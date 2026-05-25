@@ -31,7 +31,7 @@ jobs:
             ./bylaw-welcoming/bylaw-welcoming.md \
             ./input/
       - name: build
-        uses: docker://ghcr.io/8128-33550336/regulations-generator:8f57831d149e99d4e63c81b24174f6bea99d39d6
+        uses: docker://ghcr.io/8128-33550336/regulations-generator:123c8cfe6a77e426a42abcc0069bb69171f84679
         with:
           args: gen -a ./input ./output
       - name: Setup Pages
