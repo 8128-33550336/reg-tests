@@ -33,7 +33,7 @@ jobs:
       - name: build
         uses: docker://ghcr.io/8128-33550336/regulations-generator:latest
         with:
-          args: -a ./input ./output
+          args: -a $GITHUB_WORKSPACE/input $GITHUB_WORKSPACE/output
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
