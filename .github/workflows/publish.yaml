@@ -34,7 +34,7 @@ jobs:
         uses: docker://ghcr.io/8128-33550336/regulations-generator:8d31e506cf626289df9d457d61ae1fdfa7f4ae91
         with:
           entrypoint: 'sh'
-          args: -c 'cat ~/.npmrc && pwd && ls -la && cat package.json && which npx && npx regulations-generate gen -a $GITHUB_WORKSPACE/input $GITHUB_WORKSPACE/output'
+          args: -c 'cat /root/.npmrc; pwd && ls -la && cat package.json && which npx && npx regulations-generate gen -a $GITHUB_WORKSPACE/input $GITHUB_WORKSPACE/output'
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
