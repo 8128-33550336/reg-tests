@@ -31,10 +31,9 @@ jobs:
             ./bylaw-welcoming/bylaw-welcoming.md \
             ./input/
       - name: build
-        uses: docker://ghcr.io/8128-33550336/regulations-generator:8d31e506cf626289df9d457d61ae1fdfa7f4ae91
+        uses: docker://ghcr.io/8128-33550336/regulations-generator:8f57831d149e99d4e63c81b24174f6bea99d39d6
         with:
-          entrypoint: 'sh'
-          args: -c "ls; cat /root/.npmrc; pwd && ls -la && cat package.json && which npx && npx regulations-generate gen -a $GITHUB_WORKSPACE/input $GITHUB_WORKSPACE/output"
+          args: gen -a ./input ./output
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
