@@ -37,7 +37,7 @@ jobs:
       - name: build
         uses: docker://ghcr.io/8128-33550336/regulations-generator:latest
         with:
-          args: gen -a ./input ./output
+          args: gen --title "全学学類・専門学群・総合学域群代表者会議 内規" --description "(非公式) 全学学類・専門学群・総合学域群代表者会議 (全代会) の内規です。\x0aリポジトリ:https://github.com/8128-33550336/reg-tests\x0aオリジナル:https://github.com/ZDK-UTsukuba/zdk-regulations\x0a変換:https://github.com/8128-33550336/regulations-generator" -a ./input ./output
 
       - name: Setup Pages
         uses: actions/configure-pages@v6
